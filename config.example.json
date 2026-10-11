@@ -1,0 +1,13 @@
+{
+  "host": "127.0.0.1",
+  "port": 8090,
+  "cwd": "/srv/projects/my-app",
+  "workspaceRoot": "/srv/projects",
+  "claudeBin": "claude",
+  "disabledPlugins": [],
+  "pluginOptions": {
+    "claude-history": {
+      "pythonBin": "python3"
+    }
+  }
+}

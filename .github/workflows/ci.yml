@@ -1,0 +1,28 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npm test
+      - run: npm run test:python
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: npm run test:package
+      - uses: astral-sh/setup-uv@v6
+      - run: uv build --out-dir python-dist
+      - run: uv run --no-project --with ./python-dist/claude_webdesk-$(node -p "require('./package.json').version")-py3-none-any.whl python scripts/python-package-smoke.py
+      - run: uv run --no-project --with ./python-dist/claude_webdesk-$(node -p "require('./package.json').version").tar.gz python scripts/python-package-smoke.py

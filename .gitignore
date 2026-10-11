@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tgz
+.env
+coverage/
+.data/
+*.log
+__pycache__/
+*.pyc
+build/
+*.egg-info/
+.venv/
+python-dist/

@@ -1,0 +1,16 @@
+name: Workflow request / 功能建议
+description: Describe a workflow that could be easier
+title: "[Workflow] "
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: What are you trying to do? / 你想完成什么？
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current workaround and proposed improvement / 当前做法与建议
+    validations:
+      required: true

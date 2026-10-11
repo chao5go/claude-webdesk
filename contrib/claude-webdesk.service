@@ -1,0 +1,18 @@
+[Unit]
+Description=Claude Webdesk
+After=network.target
+
+[Service]
+Type=simple
+# Replace these paths with the output of: command -v node; command -v claude-webdesk; command -v claude
+Environment=PATH=%h/.npm-global/bin:%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=%h/.config/claude-webdesk/environment
+WorkingDirectory=%h/projects
+ExecStart=%h/.npm-global/bin/claude-webdesk --cwd %h/projects --workspace-root %h/projects
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+UMask=0077
+
+[Install]
+WantedBy=default.target

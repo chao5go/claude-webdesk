@@ -1,0 +1,68 @@
+{
+  "name": "claude-webdesk",
+  "version": "0.1.0",
+  "description": "Claude Code in your browser: live tasks, session history, screenshot uploads, artifacts and cost tracking. Self-hosted.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "claude-webdesk": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "dist",
+    "README.md",
+    "LICENSE",
+    "docs",
+    "config.example.json",
+    "SECURITY.md",
+    "examples",
+    "CONTRIBUTING.md",
+    "contrib"
+  ],
+  "scripts": {
+    "build": "node scripts/build.js",
+    "start": "node bin/cli.js start",
+    "dev": "npm run build && node bin/cli.js start",
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check.js",
+    "prepack": "npm run build",
+    "test:browser": "npm run build && node test/browser-smoke.mjs",
+    "test:package": "npm pack --silent && node scripts/package-smoke.js",
+    "demo": "node bin/cli.js demo",
+    "test:python": "python3 -m unittest discover -s test -p \"*_test.py\""
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "playwright": "^1.64.0",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^6.0.0",
+    "dompurify": "^3.3.0",
+    "highlight.js": "^11.11.1",
+    "marked": "^16.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chao5go/claude-webdesk.git"
+  },
+  "homepage": "https://github.com/chao5go/claude-webdesk#readme",
+  "bugs": {
+    "url": "https://github.com/chao5go/claude-webdesk/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "web-ui",
+    "remote",
+    "self-hosted",
+    "ai",
+    "developer-tools",
+    "session-manager"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
