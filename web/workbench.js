@@ -91,9 +91,9 @@ function markdown(text) {
 }
 function renderOutput(item) {
   const metrics = $("metrics");
-  metrics.hidden = item.costUsd == null && !item.usage;
   const usage = item.usage || {};
-  metrics.textContent = `USD ${Number(item.costUsd || 0).toFixed(4)}  ·  Input ${(usage.input_tokens || 0).toLocaleString()}  ·  Output ${(usage.output_tokens || 0).toLocaleString()}  ·  Cache ${(usage.cache_read_input_tokens || 0).toLocaleString()}  ·  ${item.turns || 0} turns`;
+  metrics.hidden = item.costUsd == null && Object.keys(usage).length === 0;
+  metrics.textContent = `USD ${item.costUsd == null ? "—" : Number(item.costUsd).toFixed(4)}  ·  Input ${(usage.input_tokens || 0).toLocaleString()}  ·  Output ${(usage.output_tokens || 0).toLocaleString()}  ·  Cache ${(usage.cache_read_input_tokens || 0).toLocaleString()}  ·  ${item.turns || 0} turns`;
 
   const output = $("structured");
   const nearBottom =
